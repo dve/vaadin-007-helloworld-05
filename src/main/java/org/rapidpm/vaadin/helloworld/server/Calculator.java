@@ -1,5 +1,7 @@
 package org.rapidpm.vaadin.helloworld.server;
 
+import java.util.concurrent.TimeUnit;
+
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.HorizontalLayout;
@@ -29,7 +31,14 @@ public class Calculator extends CustomComponent {
 
 		layout.addComponents(inputA, new Label("+"), inputB, button, output);
 
-		button.addClickListener(event -> output.setValue(inputA.getValue() + inputB.getValue()));
+		button.addClickListener(event -> {
+			try {
+				TimeUnit.SECONDS.sleep(1);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			output.setValue(inputA.getValue() + inputB.getValue());
+		});
 
 		setCompositionRoot(layout);
 	}
