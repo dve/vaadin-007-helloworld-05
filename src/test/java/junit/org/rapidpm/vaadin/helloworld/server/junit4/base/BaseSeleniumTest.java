@@ -25,6 +25,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
 import junit.org.rapidpm.vaadin.helloworld.server.junit4.rules.ScreenshotTestRule;
 
 /**
@@ -42,7 +43,7 @@ public class BaseSeleniumTest extends BaseTest {
   public void setUp() throws Exception {
     super.setUp();
     // init webDriver here
-    System.setProperty("newWebDriver.chrome.driver", "_data/chromedriver");
+		System.setProperty("newWebDriver.chrome.driver", "drivers/chromedriver");
     DesiredCapabilities chromeCapabilities = DesiredCapabilities.chrome();
     driver = Optional.of(new ChromeDriver(chromeCapabilities));
     screenshotTestRule.setDriverOptional(driver);
