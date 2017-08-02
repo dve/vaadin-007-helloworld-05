@@ -1,9 +1,9 @@
 package junit.org.rapidpm.vaadin.helloworld.server.junit4;
 
 import static com.github.webdriverextensions.Bot.assertAttributeEquals;
-import static com.github.webdriverextensions.Bot.click;
 import static com.github.webdriverextensions.Bot.open;
 import static com.github.webdriverextensions.Bot.type;
+import static com.github.webdriverextensions.vaadin.VaadinBot.clickAndWait;
 
 import org.junit.Test;
 
@@ -25,7 +25,7 @@ public class MyUITest extends BaseSeleniumTest {
 		type("5", uiPage.getCalucaltorA().getInputA());
 		type("5", uiPage.getCalucaltorA().getInputB());
 
-		click(uiPage.getCalucaltorA().getButton());
+		clickAndWait(uiPage.getCalucaltorA().getButton());
 
 		assertAttributeEquals("value", 10, uiPage.getCalucaltorA().getOutput());
 
@@ -39,7 +39,7 @@ public class MyUITest extends BaseSeleniumTest {
 		type("Hello, ", uiPage.getCalucaltorB().getInputA());
 		type("World!", uiPage.getCalucaltorB().getInputB());
 
-		click(uiPage.getCalucaltorB().getButton());
+		clickAndWait(uiPage.getCalucaltorB().getButton());
 
 		assertAttributeEquals("value", "Hello, World!", uiPage.getCalucaltorB().getOutput());
 		assertAttributeEquals("value", "", uiPage.getCalucaltorA().getOutput());
