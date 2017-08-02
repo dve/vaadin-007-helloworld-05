@@ -7,10 +7,6 @@ import static org.rapidpm.vaadin.helloworld.server.MyUI.INPUT_ID_A;
 import static org.rapidpm.vaadin.helloworld.server.MyUI.INPUT_ID_B;
 import static org.rapidpm.vaadin.helloworld.server.MyUI.OUTPUT_ID;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -18,40 +14,34 @@ import java.util.function.Supplier;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
-import junit.org.rapidpm.vaadin.helloworld.server.junit4.rules.ScreenshotTestRule;
+import com.github.webdriverextensions.Bot;
+import com.github.webdriverextensions.junitrunner.WebDriverRunner;
+import com.github.webdriverextensions.junitrunner.annotations.Chrome;
+import com.github.webdriverextensions.junitrunner.annotations.ScreenshotsPath;
+import com.github.webdriverextensions.junitrunner.annotations.TakeScreenshotOnFailure;
 
 /**
  *
  */
+@Chrome
+@RunWith(WebDriverRunner.class)
+@TakeScreenshotOnFailure
+@ScreenshotsPath("target/surefire-reports/screenshots")
 public class BaseSeleniumTest extends BaseTest {
 
   protected Optional<WebDriver> driver;
-
-  @Rule
-  public ScreenshotTestRule screenshotTestRule = new ScreenshotTestRule();
 
   @Override
   @Before
   public void setUp() throws Exception {
     super.setUp();
-    // init webDriver here
-		System.setProperty("newWebDriver.chrome.driver", "drivers/chromedriver");
-    DesiredCapabilities chromeCapabilities = DesiredCapabilities.chrome();
-    driver = Optional.of(new ChromeDriver(chromeCapabilities));
-    screenshotTestRule.setDriverOptional(driver);
-    driver.ifPresent(d -> {
-      d.manage().window().maximize();
-//      d.manage().window().setSize(new Dimension(1024, 768));
-    });
-    //final WebDriverWait wait = new WebDriverWait(driver, 10);
+
+		driver = Optional.of(Bot.driver());
+
   }
 
 
@@ -59,11 +49,7 @@ public class BaseSeleniumTest extends BaseTest {
   @After
   public void tearDown() throws Exception {
     System.out.println("BaseSeleniumTest.tearDown !! ");
-    // kill newWebDriver / Browser here
-    driver.ifPresent(d -> {
-      d.close();
-      d.quit();
-    });
+
     driver = Optional.empty();
     super.tearDown();
   }
@@ -83,22 +69,5 @@ public class BaseSeleniumTest extends BaseTest {
   protected Supplier<WebElement> output = () -> element.apply(OUTPUT_ID);
   protected Supplier<WebElement> inputA = () -> element.apply(INPUT_ID_A);
   protected Supplier<WebElement> inputB = () -> element.apply(INPUT_ID_B);
-
-  protected void takeScreenShot() {
-    System.out.println("takeScreenShot !!");
-    //take Screenshot
-    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    try {
-      outputStream.write(((TakesScreenshot) driver.get()).getScreenshotAs(OutputType.BYTES));
-      //write to target/screenshot-[timestamp].jpg
-      final FileOutputStream out = new FileOutputStream("target/screenshot-" + LocalDateTime.now() + ".png");
-      out.write(outputStream.toByteArray());
-      out.flush();
-      out.close();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
 
 }
