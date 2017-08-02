@@ -1,10 +1,10 @@
 package junit.org.rapidpm.vaadin.helloworld.server.junit4.page;
 
 import static com.github.webdriverextensions.Bot.assertIsDisplayed;
-import static org.rapidpm.vaadin.helloworld.server.MyUI.BUTTON_ID;
-import static org.rapidpm.vaadin.helloworld.server.MyUI.INPUT_ID_A;
-import static org.rapidpm.vaadin.helloworld.server.MyUI.INPUT_ID_B;
-import static org.rapidpm.vaadin.helloworld.server.MyUI.OUTPUT_ID;
+import static org.rapidpm.vaadin.helloworld.server.Calculator.BUTTON_ID;
+import static org.rapidpm.vaadin.helloworld.server.Calculator.INPUT_ID_A;
+import static org.rapidpm.vaadin.helloworld.server.Calculator.INPUT_ID_B;
+import static org.rapidpm.vaadin.helloworld.server.Calculator.OUTPUT_ID;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
