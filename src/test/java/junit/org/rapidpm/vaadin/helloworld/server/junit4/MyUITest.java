@@ -29,4 +29,16 @@ public class MyUITest extends BaseSeleniumTest {
 
 		assertAttributeEquals("value", 10, uiPage.getOutput());
 	}
+
+	@Test
+	public void test002() throws Exception {
+
+		open(uiPage);
+		type("Hello, ", uiPage.getInputA());
+		type("World!", uiPage.getInputB());
+
+		click(uiPage.getButton());
+
+		assertAttributeEquals("value", "Hello, World!", uiPage.getOutput());
+	}
 }
