@@ -22,23 +22,26 @@ public class MyUITest extends BaseSeleniumTest {
 	public void test001() throws Exception {
 
 		open(uiPage);
-		type("5", uiPage.getInputA());
-		type("5", uiPage.getInputB());
+		type("5", uiPage.getCalucaltorA().getInputA());
+		type("5", uiPage.getCalucaltorA().getInputB());
 
-		click(uiPage.getButton());
+		click(uiPage.getCalucaltorA().getButton());
 
-		assertAttributeEquals("value", 10, uiPage.getOutput());
+		assertAttributeEquals("value", 10, uiPage.getCalucaltorA().getOutput());
+
+		assertAttributeEquals("value", "", uiPage.getCalucaltorB().getOutput());
 	}
 
 	@Test
 	public void test002() throws Exception {
 
 		open(uiPage);
-		type("Hello, ", uiPage.getInputA());
-		type("World!", uiPage.getInputB());
+		type("Hello, ", uiPage.getCalucaltorB().getInputA());
+		type("World!", uiPage.getCalucaltorB().getInputB());
 
-		click(uiPage.getButton());
+		click(uiPage.getCalucaltorB().getButton());
 
-		assertAttributeEquals("value", "Hello, World!", uiPage.getOutput());
+		assertAttributeEquals("value", "Hello, World!", uiPage.getCalucaltorB().getOutput());
+		assertAttributeEquals("value", "", uiPage.getCalucaltorA().getOutput());
 	}
 }
