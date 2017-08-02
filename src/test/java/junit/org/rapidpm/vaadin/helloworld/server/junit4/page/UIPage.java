@@ -1,10 +1,10 @@
 package junit.org.rapidpm.vaadin.helloworld.server.junit4.page;
 
 import static com.github.webdriverextensions.Bot.assertIsDisplayed;
-import static org.rapidpm.vaadin.helloworld.server.Calculator.BUTTON_ID;
-import static org.rapidpm.vaadin.helloworld.server.Calculator.INPUT_ID_A;
-import static org.rapidpm.vaadin.helloworld.server.Calculator.INPUT_ID_B;
-import static org.rapidpm.vaadin.helloworld.server.Calculator.OUTPUT_ID;
+import static org.rapidpm.vaadin.helloworld.server.Calculator.BUTTON_CLASS;
+import static org.rapidpm.vaadin.helloworld.server.Calculator.INPUT_A_CLASS;
+import static org.rapidpm.vaadin.helloworld.server.Calculator.INPUT_B_CLASS;
+import static org.rapidpm.vaadin.helloworld.server.Calculator.OUTPUT_CLASS;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,13 +13,13 @@ import com.github.webdriverextensions.WebPage;
 
 public class UIPage extends WebPage {
 
-	@FindBy(id = BUTTON_ID)
+	@FindBy(className = BUTTON_CLASS)
 	private WebElement button;
-	@FindBy(id = INPUT_ID_A)
+	@FindBy(className = INPUT_A_CLASS)
 	private WebElement inputA;
-	@FindBy(id = INPUT_ID_B)
+	@FindBy(className = INPUT_B_CLASS)
 	private WebElement inputB;
-	@FindBy(id = OUTPUT_ID)
+	@FindBy(className = OUTPUT_CLASS)
 	private WebElement output;
 
 	@Override
