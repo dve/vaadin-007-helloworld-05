@@ -85,27 +85,13 @@
       <scope>test</scope>
     </dependency>
 
-    <!--TDD Selenium-->
+    <!--TDD Webdriverextension, includes Selenium as transitive dep-->
     <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-api</artifactId>
-      <version>${selenium.version}</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-      <version>${selenium.version}</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-chrome-driver</artifactId>
-      <version>${selenium.version}</version>
-      <scope>test</scope>
-    </dependency>
+    	<groupId>com.github.webdriverextensions</groupId>
+    	<artifactId>webdriverextensions</artifactId>
+    	<version>3.5.2</version>
+    	<scope>test</scope>
+	</dependency>
 
     <!--Logging-->
   </dependencies>
