@@ -1,13 +1,14 @@
 package junit.org.rapidpm.vaadin.helloworld.server.junit4;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import static com.github.webdriverextensions.Bot.assertAttributeEquals;
+import static com.github.webdriverextensions.Bot.click;
+import static com.github.webdriverextensions.Bot.open;
+import static com.github.webdriverextensions.Bot.type;
 
-import com.github.webdriverextensions.Bot;
+import org.junit.Test;
 
 import junit.org.rapidpm.vaadin.helloworld.server.junit4.base.BaseSeleniumTest;
+import junit.org.rapidpm.vaadin.helloworld.server.junit4.page.UIPage;
 
 /**
  *
@@ -15,17 +16,17 @@ import junit.org.rapidpm.vaadin.helloworld.server.junit4.base.BaseSeleniumTest;
 
 public class MyUITest extends BaseSeleniumTest {
 
-  @Test
-  public void test001() throws Exception {
-		final WebDriver webDriver = Bot.driver();
+	private UIPage uiPage;
 
-    webDriver.get("http://127.0.0.1:8080/");
-    inputA.get().sendKeys("5");
-    inputB.get().sendKeys("5");
+	@Test
+	public void test001() throws Exception {
 
-    final WebElement btn = button.get();
-    btn.click();
-    String value = output.get().getAttribute("value");
-    Assert.assertEquals("10", value);
-  }
+		open(uiPage);
+		type("5", uiPage.getInputA());
+		type("5", uiPage.getInputB());
+
+		click(uiPage.getButton());
+
+		assertAttributeEquals("value", 10, uiPage.getOutput());
+	}
 }
