@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 
 import com.github.webdriverextensions.junitrunner.WebDriverRunner;
 import com.github.webdriverextensions.junitrunner.annotations.Chrome;
+import com.github.webdriverextensions.junitrunner.annotations.Firefox;
 import com.github.webdriverextensions.junitrunner.annotations.ScreenshotsPath;
 import com.github.webdriverextensions.junitrunner.annotations.TakeScreenshotOnFailure;
 
@@ -11,6 +12,7 @@ import com.github.webdriverextensions.junitrunner.annotations.TakeScreenshotOnFa
  *
  */
 @Chrome
+@Firefox
 @RunWith(WebDriverRunner.class)
 @TakeScreenshotOnFailure
 @ScreenshotsPath("target/surefire-reports/screenshots")

@@ -138,6 +138,9 @@
     			<driver>
     				<name>chromedriver</name>
     			</driver>
+    			<driver>
+    				<name>geckodriver</name>
+    			</driver>
     		</drivers>
     	</configuration>
 	</plugin>

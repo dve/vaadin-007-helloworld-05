@@ -14,3 +14,10 @@ If you want to run the tests on a remote system set the system property `webdriv
 ```
 mvn install -Dwebdriverextensions.remoteaddres=http://selenium-standalone-chrome:4444/wd/hub
 ```
+
+## disable browser
+The tests run with firefox and chrome. If you want them to only run with chrome set the system property `webdriverextensions.disablebrowsers` e.g.:
+
+```
+mvn install -Dwebdriverextensions.disabledbrowsers=firefox
+```
